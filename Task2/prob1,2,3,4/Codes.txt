@@ -1,0 +1,28 @@
+//prob1
+select product_name , [year] , price
+from sales s join product p
+on s.product_id = p.product_id
+
+/**********************************/
+
+//prob2
+select customer_id , count(*) as count_no_trans
+from Visits v left join Transactions t
+on v.visit_id = t.visit_id
+where t.transaction_id is null
+group by customer_id
+
+/**********************************/
+
+//prob3
+select unique_id , [name]
+from employees e left join employeeUNI e_uni
+on e.id = e_uni.id
+
+/**********************************/
+
+//prob4
+SELECT x.id FROM Weather x
+JOIN Weather y
+ON x.recordDate = DATEADD(day, 1, y.recordDate)
+WHERE x.temperature > y.temperature
