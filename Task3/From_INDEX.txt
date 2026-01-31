@@ -1,0 +1,57 @@
+Prob 7
+
+CREATE INDEX AppLogs_index
+ON AppLogs(service_name,created_at)
+
+-----------------------------------
+Prob 8
+
+problem -> key lookup
+لان ال index
+مش مغطي كل اللي في الselect
+
+solution -> covering index
+
+CREATE INDEX orders_index
+ON order(order_date)
+INCLUDE(order_id,customer_id,total_amount)
+
+-----------------------------------
+
+Prob 9
+
+CREATE PROC sp_ApplyCategoryDiscount
+    @catID INT, @DiscountPercent INT
+
+AS
+UPDATE product
+SET price = 
+	CASE WHEN (price - .01 * @DiscountPercent * price) <= min_price THEN min_price
+	ELSE (price - .01 * @DiscountPercent * price) END
+
+
+WHERE category_id = @catID
+
+-----------------------------------
+
+Prob 10
+
+CREATE VIEW VIPCustomers_v
+AS
+SELECT name , email , total_spent
+FROM customer
+WHERE total_spent > 5000
+ORDER BY total_spent DESC
+
+
+
+
+
+
+
+
+
+
+
+
+
