@@ -1,0 +1,31 @@
+---------------------
+Runtime Environment Analyzer
+----------------------
+
+
+using System.Runtime.InteropServices;
+
+namespace Task4_Prob1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine($"Runtime Version -> {Environment.Version}");
+            Console.WriteLine($"Operating System -> {RuntimeInformation.OSDescription}");
+            Console.WriteLine($"Architecture -> {RuntimeInformation.OSArchitecture}");
+
+            string frameworkDescription = RuntimeInformation.FrameworkDescription;
+
+            string runtimeType = frameworkDescription switch
+            {
+                string r when r.Contains("Framework")
+                    => "Legacy Runtime",
+
+                _ => "Modern.NET Runtime"
+            };
+            Console.WriteLine($"Runtime Type -> {runtimeType}");
+
+        }
+    }
+}

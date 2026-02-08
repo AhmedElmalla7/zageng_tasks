@@ -1,0 +1,54 @@
+---------------------
+Feature Toggle System
+----------------------
+
+
+
+namespace FeatureToggleSystem
+{
+    public class Feature
+    {
+        public const string AppVersion = "1.5";
+        public string Name { get; set; }
+        public bool IsEnabled { get; set; }
+        public readonly string MinVersion;
+
+        public Feature(string name, bool isEnabled, string minVersion)
+        {
+            Name = name;
+            IsEnabled = isEnabled;
+            MinVersion = minVersion;
+        }
+        public bool CanRun()
+        {
+            return (IsEnabled && (double.Parse(AppVersion) >= double.Parse(MinVersion)));
+        }
+
+
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Feature login = new Feature("Login", true, "1.0");
+            Feature export = new Feature("Export", false, "1.2");
+            Feature admin = new Feature("AdminPanel", true, "2.0");
+
+            
+            if (login.CanRun())
+                Console.WriteLine("Login feature is available.");
+            else
+                Console.WriteLine("Login feature is not available.");
+
+            
+            Console.WriteLine(export.CanRun() ? "Export is available." : "Export is not available.");
+
+            Console.WriteLine(admin.CanRun() ? "Admin is available." : "Admin is not available.");
+
+
+        }
+    }
+
+}
+  
+

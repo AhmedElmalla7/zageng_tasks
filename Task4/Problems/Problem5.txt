@@ -1,0 +1,65 @@
+----------------------
+Payment Exception Design
+----------------------
+
+
+namespace PaymentExceptionDesign
+{
+    public class InsufficientBalanceException : Exception 
+    {
+        public InsufficientBalanceException (string message) : base(message) { }
+
+    }
+    public class PaymentTimeoutException : Exception
+    {
+        public PaymentTimeoutException (string message) : base(message) { }
+    }
+    public class PaymentService
+    {
+        public decimal Balance { get; private set; }
+
+        public PaymentService(decimal balance)
+        {
+            Balance = balance;
+        }
+
+        public void Pay(decimal amount, bool simulateTimeout)
+        {
+            if (simulateTimeout)
+                throw new PaymentTimeoutException("Payment timed out.");
+
+            if (amount > Balance)
+                throw new InsufficientBalanceException("Insufficient balance.");
+
+            Balance -= amount;
+            Console.WriteLine("Payment successful");
+        }
+    }
+
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            PaymentService payment = new PaymentService(500);
+
+            try
+            {
+                payment.Pay(500, true);
+            }
+            catch (InsufficientBalanceException ex) 
+            {
+                Console.WriteLine("Balance Error: " + ex.Message);
+            }
+            catch (PaymentTimeoutException ex) 
+            {
+                Console.WriteLine("Timeout Error: " + ex.Message);
+            }
+            
+            finally
+            {
+                Console.WriteLine("End of transaction");
+            }
+
+        }
+    }
+}

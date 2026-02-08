@@ -1,0 +1,69 @@
+---------------------
+Memory Behavior Test
+----------------------
+
+
+
+namespace MemoryBehavior
+{
+    public class User
+    {
+        public string Name;
+        public User(string name)
+        {
+            Name = name;
+        }
+    }
+    public struct UserSnapshot
+    {
+        public string Name;
+        public UserSnapshot(string name)
+        {
+            Name = name;
+        }
+    }
+    internal class Program
+    {
+
+        static void Main(string[] args)
+        {
+            User u = new User("value");
+            UserSnapshot s = new UserSnapshot("value");
+
+            Console.WriteLine("Before");
+            Console.WriteLine($"{u.Name}   {s.Name}\n");
+
+            Modify(u, s);
+            Console.WriteLine("Without ref");
+            Console.WriteLine($"{u.Name}   {s.Name}\n");
+
+            ModifyWithRef(ref u, ref s);
+            Console.WriteLine("With ref");
+            Console.WriteLine($"{u.Name}   {s.Name}");
+        }
+        public static void Modify(User u, UserSnapshot s)
+        {
+            u.Name = "Modified";
+            s.Name = "Modified";
+        }
+        public static void ModifyWithRef(ref User u, ref UserSnapshot s)
+        {
+            u.Name = "ModifiedWithRef";
+            s.Name = "ModifiedWithRef";
+        }
+
+
+    }
+}
+-------------------------------------------------------
+1/ What changed ->  User changed after call Modify but UserSnapshot Not
+		    They changed together after call ModifyWithRef 
+		    because ref pass the variable itself not copy 
+
+2/ Why -> because Class (Reference type)
+ 		  Struct (Value type)
+
+
+3/ Stack vs Heap -> Stack : value types - faster than heap - limited size
+		    Heap : Reference types - slower than stack - larger size
+
