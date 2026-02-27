@@ -1,0 +1,35 @@
+namespace Problem7
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> scores = [88, 92, 75, 60, 55, 80, 91, 45];
+
+            // 1. TakeWhile score >= 70 → expected: [88, 92, 75]
+            var scores1 = scores.TakeWhile(s => s >= 70);
+            Console.WriteLine("Take scores while score >= 70 ");
+            foreach (var item in scores1)
+            {
+                Console.Write(item + "  ");
+            }
+            Console.WriteLine("\n------------------------------------");
+
+            // 2. SkipWhile score >= 70 → expected: [60, 55, 80, 91, 45]
+            var scores2 = scores.SkipWhile(s => s >= 70);
+            Console.WriteLine("Skip scores while score >= 70 ");
+            foreach (var item in scores2)
+            {
+                Console.Write(item + "  ");
+            }
+            Console.WriteLine("\n------------------------------------");
+
+            // 3. What is the difference between this and using Where? Explain in a comment.
+
+            // where : بتمشي على العناصر كلها وتاخد اللي يحقق الشرط 
+            // TakeWhile : بتاخد العناصر من الاول واول ما الشرط يفشل توقف 
+            // SkipWhile : بتعدي العناصر من الاول واول ما الشرط يفشل ياخد باقي العناصر
+
+        }
+    }
+}

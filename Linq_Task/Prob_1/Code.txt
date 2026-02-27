@@ -1,0 +1,40 @@
+using System.Linq;
+
+namespace Linq_Task
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> numbers = [3, 18, 7, 42, 10, 5, 29, 14, 6, 100];
+
+
+            //even numbers greater than 10 descending
+
+            // Query Syntax
+            var query1 = from number in numbers
+                         where number > 10 && number % 2 == 0
+                         orderby number descending
+                         select number;
+            Console.WriteLine("Query Syntax");
+            foreach (var item in query1)
+            {
+                Console.Write(item + " ");
+            }
+
+            Console.WriteLine("\n-----------------------------");
+
+            // Fluent (Method) Syntax
+
+            var query2 = numbers.Where(n => n > 10 && n % 2 == 0)
+                               .OrderByDescending(n => n);
+
+            Console.WriteLine("Method Syntax");
+
+            foreach (var item in query2)
+            {
+                Console.Write(item + " ");
+            }
+        }
+    }
+}
