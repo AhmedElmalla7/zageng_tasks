@@ -1,0 +1,44 @@
+namespace Problem_9
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> nums = [1, 2, 3, 4, 5];
+
+            var query = nums.Where(n => n > 2); // ← query defined here
+
+            nums.Add(10); // ← source modified AFTER query
+
+
+            foreach (var n in query)
+                Console.Write(n + " ");
+
+
+            // Q: What is printed? Why?
+
+            // 3 4 5 10
+            // due to deferred excution
+            Console.WriteLine("\n-----------------");
+            // Q: How would using .ToList() right after .Where(...) change the result?
+            Console.WriteLine("The effect of .ToList()");
+            List<int> _nums = [1, 2, 3, 4, 5];
+
+            var _query = _nums.Where(n => n > 2).ToList();
+
+            _nums.Add(10);
+
+            foreach (var n in _query)
+                Console.Write(n + " ");
+
+            // output : 3 4 5 
+            // 10 not be included due to immediate excution
+
+            // Q: Name 3 LINQ operators that trigger immediate execution.
+
+            // 1 - ToArray()
+            // 2 - Max()
+            // 3 - First()
+        }
+    }
+}
