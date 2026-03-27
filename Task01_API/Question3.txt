@@ -1,0 +1,10 @@
+What happens when a request is received?
+
+	- الـ Request بيوصل للـ API
+	- ASP.NET Core ينشئ الـ Controller
+	- الـ DI Container ينشئ ProductService   -> Scoped (instance per request)
+	- ProductService محتاج IRepository
+	- الـ DI Container يدور على IRepository   -> يلاقيه متربط بـ SqlRepository
+	- يتم حقن الـ Dependency   -> يدي SqlRepository للـ ProductService
+	- تنفيذ الـ Action  -> _productService.AddProduct(name);
+	- Service ينادي Repository , ويتم حفظ البيانات في الداتابيز

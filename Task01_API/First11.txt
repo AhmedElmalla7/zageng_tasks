@@ -1,0 +1,60 @@
+1. What are the fundamental differences between the original ASP.NET and ASP.NET Core?
+	
+	- ASP.NET      : runs only on windows - relies on Internet Information Services for hosting - low performance
+	- ASP.NET Core : cross platform - support multiple hosting - high performance
+--------------------------------------------------------------------------------------------
+2. What does it mean for an API to be "Stateless"?
+
+	- it means each request is independent and contains all the necessary information for processing
+--------------------------------------------------------------------------------------------
+3. Break down the anatomy of an HTTP Request URL?
+
+	- https://      	www.google.com       	/api/products     	?category=electronics
+	- Scheme 		Host	             	Path	       		Query string
+--------------------------------------------------------------------------------------------
+4. What are the primary HTTP Methods (Verbs) and their standard uses?
+	- GET    : get data from API
+	- POST   : create new records
+	- PUT    : update existing records
+	- DELETE : delete records
+--------------------------------------------------------------------------------------------
+5. What is the role of Program.cs in an ASP.NET Core application?
+	
+	- the entry point of an ASP.NET Core application - It is responsible for bootstrapping, configuring, and starting the web application.
+--------------------------------------------------------------------------------------------
+6. Why is Swagger/OpenAPI typically enabled only in the "Development" environment?
+
+	- to protect application security and reduce exposure of internal API details in production
+--------------------------------------------------------------------------------------------
+7. What is the core concept of "Dependency Injection" (DI)?
+
+	- a design pattern in which an object receives its dependencies from an external source rather than creating them itself
+	- make the system flexible and easier to manage
+--------------------------------------------------------------------------------------------
+8. Explain the three Service Lifetimes in ASP.NET Core DI?
+
+	1. Transient
+		Created every time it is requested
+		Suitable for lightweight, stateless services
+
+	2. Scoped
+		Created once per HTTP request
+		Shared within the same request
+
+	3. Singleton
+		Created once for the entire application lifetime
+		Shared across all requests and users
+--------------------------------------------------------------------------------------------
+9. Why is it a "Best Practice" to register services against an Interface rather than a concrete Class?
+
+	- Easy to swap implementations without changing dependent code
+	- Cleaner and more scalable architecture
+--------------------------------------------------------------------------------------------
+10. What are the "Launch Profiles" found in launchSettings.json ?
+	
+	- The environment - URL and ports - hosting method 
+	- help developers run and test applications under different configurations
+--------------------------------------------------------------------------------------------
+11. How does JSON facilitate data exchange in APIs?
+
+	- simplifies communication in APIs by providing a standard, efficient, and widely supported format for data exchange

@@ -1,0 +1,9 @@
+Which implementation will Controller A receive?
+
+	- MailgunEmailService
+		-> When multiple implementations are registered , ASP.NET Core injects the last registered service
+
+--------------------------------------------------------------------------------------
+How many services will be injected into Controller B?
+
+	- 3 services will be injected (all registered implementations)

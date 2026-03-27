@@ -1,0 +1,18 @@
+What's the difference between A and B? Which one is better?
+
+	A :  
+	    - UserService creates its dependency directly
+            - UserService depends on EmailService (Tight Coupling)
+	    - violates Dependency Injection principle
+
+	B :
+	   
+	    - The dependency is injected through the constructor
+	    - UserService depends on IEmailService (Loose Coupling)
+	    - more flexible
+
+	
+	Scenario B is better due to
+		- uses Dependecy Injection
+		- Reduces coupling
+		- Makes the code more flexible and scalable	

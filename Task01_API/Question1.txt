@@ -1,0 +1,14 @@
+What is Dependency?
+
+	- is any object or service that a class depends on in order to perform its functionality
+
+Problems in the code :
+
+	-> Dependencies :
+		- OrderService depends on 
+			- SqlConnection
+			- EmailSender
+			- FileLogger
+
+	-> Tight Coupling
+		- The dependencies are created directly inside the class
