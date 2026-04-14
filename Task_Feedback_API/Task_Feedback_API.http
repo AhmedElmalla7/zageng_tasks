@@ -1,0 +1,6 @@
+@Task_Feedback_API_HostAddress = http://localhost:5289
+
+GET {{Task_Feedback_API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
